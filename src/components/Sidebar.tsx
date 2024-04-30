@@ -1,7 +1,6 @@
 "use client";
 import { nav } from "@/constant";
 import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -15,8 +14,8 @@ const Sidebar = ({ show }: { show: boolean }) => {
     >
       <div className={show ? "" : "hidden"}>
         <div className="flex gap-2 items-center w-full ">
-          <Image src="/schedule-time.png" alt="icon" width={30} height={30} />
-          <h1 className="text-2xl font-extrabold text-transparent bg-gradient-to-r from-blue-500 to-[#16a34a] bg-clip-text">
+          {/*<Image src="/schedule-time.png" alt="icon" width={30} height={30} />*/}
+          <h1 className="text-2xl font-extrabold text-[#e11d48] ">
             Time Planner
           </h1>
         </div>
@@ -29,7 +28,7 @@ const Sidebar = ({ show }: { show: boolean }) => {
                 "font-extrabold": pathname === link.href,
               })}
             >
-              <link.icon color="#16a34a" />
+              <link.icon color="#e11d48" />
               {link.title}
             </Link>
           ))}

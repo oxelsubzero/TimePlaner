@@ -8,11 +8,11 @@ const Header = ({
   setShow: (show: boolean) => void;
 }) => {
   return (
-    <div className="p-5 ">
+    <div className="p-3 ">
       <Button
         onClick={() => setShow(!show)}
         variant={"outline"}
-        className="hover:bg-[#16a34a]"
+        className="hover:bg-[#e11d48]"
       >
         <MenuIcon />
       </Button>

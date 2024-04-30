@@ -1,5 +1,4 @@
-"use client";
-
+import { TasksSkeleton } from "@/components/skeletons/TasksSkeleton";
 import { Button } from "@/components/ui/button";
 import { PlusIcon } from "lucide-react";
 
@@ -13,6 +12,7 @@ export default function Home() {
           Create Task
         </Button>
       </div>
+      <TasksSkeleton />
     </div>
   );
 }
