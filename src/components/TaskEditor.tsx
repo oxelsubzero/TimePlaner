@@ -24,7 +24,7 @@ export default function TaskEditor({ task }: { task: Task }) {
           <DialogDescription></DialogDescription>
         </DialogHeader>
         <div className="my-2">
-          <TaskForm defaultValue={task} />
+          <TaskForm defaultValue={task} id={task.id} />
         </div>
       </DialogContent>
     </Dialog>

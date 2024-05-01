@@ -1,6 +1,6 @@
 "use client";
 
-import { create as createTask } from "@/actions/todo";
+import { create as createTask, update } from "@/actions/todo";
 
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
@@ -49,14 +49,15 @@ export default function TaskForm({
 
   async function onSubmit(values: z.infer<typeof TaskFormSchema>) {
     const taskData: Task = {
+      id: 0,
       title: values.title,
       description: values.description,
-      completed: values.completed,
-      dueDate: values.dueDate,
+      status: values.status,
+      duedate: values.duedate,
       priority: values.priority,
     };
     if (id) {
-      return " ";
+      await update(taskData, id);
     } else {
       const res = await createTask(taskData);
       res && console.log(res);
@@ -99,7 +100,7 @@ export default function TaskForm({
         />
         <FormField
           control={form.control}
-          name="dueDate"
+          name="duedate"
           render={({ field }) => (
             <FormItem className="flex flex-col">
               <FormLabel>Due date</FormLabel>
@@ -127,9 +128,6 @@ export default function TaskForm({
                     mode="single"
                     selected={field.value}
                     onSelect={field.onChange}
-                    disabled={(date) =>
-                      date > new Date() || date < new Date("1900-01-01")
-                    }
                     initialFocus
                   />
                 </PopoverContent>
@@ -156,6 +154,30 @@ export default function TaskForm({
                   <SelectItem value="important">Important</SelectItem>
                   <SelectItem value="not urgent">Not urgent</SelectItem>
                   <SelectItem value="not important">Not Important</SelectItem>
+                </SelectContent>
+              </Select>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="status"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Priority</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Select the status of this task" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="Not started">Not started</SelectItem>
+                  <SelectItem value="In progress">In progress</SelectItem>
+                  <SelectItem value="Completed">Completed</SelectItem>
                 </SelectContent>
               </Select>
 

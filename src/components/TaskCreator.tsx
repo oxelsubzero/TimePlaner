@@ -27,9 +27,9 @@ export default function TaskCreator() {
             defaultValue={{
               title: "",
               description: "",
-              completed: false,
-              dueDate: new Date(),
-              priority: undefined,
+              duedate: new Date(),
+              priority: "important",
+              status: "Not started",
             }}
           />
         </div>

@@ -8,7 +8,7 @@ const Sidebar = ({ show }: { show: boolean }) => {
   const pathname = usePathname();
   return (
     <div
-      className={`top-0 left-0 h-full ease-in-out duration-300 relative  ${
+      className={`top-0 left-0 h-full shadow-sm  ease-in-out duration-300 relative  ${
         show ? "w-[30vh] translate-x-0 p-5" : "-translate-x-full "
       }`}
     >

@@ -1,6 +1,7 @@
 import TaskCreator from "@/components/TaskCreator";
 import TaskList from "@/components/TaskList";
 import { TasksSkeleton } from "@/components/skeletons/TasksSkeleton";
+import { getTasksByStatus } from "@/lib/data";
 import { Suspense } from "react";
 export default async function Home() {
   return (
@@ -11,7 +12,9 @@ export default async function Home() {
       </div>
       <div>
         <Suspense fallback={<TasksSkeleton />}>
-          <TaskList title="ToDo" />
+          <TaskList title="In progress" taskLoader={getTasksByStatus} />
+          <TaskList title="Not started" taskLoader={getTasksByStatus} />
+          <TaskList title="Completed" taskLoader={getTasksByStatus} />
         </Suspense>
       </div>
     </div>
